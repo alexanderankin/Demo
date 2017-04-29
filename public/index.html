@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node.js Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    
+    <div class="container">
+      <h1>Hello, world!</h1>
+      <p>Text can be appended to this page by running<pre>echo '{"test":"value"}' | nc localhost 9838</pre> on another shell.</p>
+      <pre>echo '{"text":"value"}' | nc localhost 9838</pre>
+      <pre id="stream">/* DemoText */</pre>
+      <div id="graph" style="margin: auto;height:200px;width:300px; "></div>
+      <p>Points can be appended to this graph by writing JSON to tcp socket 9838 with property graph. For example, some time series data, or other measurements.</p>
+      <pre>echo '{"graph":{"x":0,"y":2}}' | nc localhost 9838
+echo '{"graph":{"x":10,"y":3}}' | nc localhost 9838
+echo '{"graph":{"x":20,"y":5}}' | nc localhost 9838
+echo '{"graph":{"x":30,"y":5}}' | nc localhost 9838</pre>
+    </div>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/EventEmitter/5.1.0/EventEmitter.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/jquery.jqplot.min.js"></script>
+
+    <script src="index.js"></script>
+  </body>
+</html>
