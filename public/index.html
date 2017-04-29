@@ -10,15 +10,18 @@
     
     <div class="container">
       <h1>Hello, world!</h1>
-      <p>Text can be appended to this page by running<pre>echo '{"test":"value"}' | nc localhost 9838</pre> on another shell.</p>
-      <pre>echo '{"text":"value"}' | nc localhost 9838</pre>
+      <p>Text can be appended to this page by running</p>
+      <pre id="port-holder">port=9838</pre>
+      <pre>echo '{"test":"value"}' | nc localhost $port</pre>
+      <p>on another shell.</p>
+      <pre>echo '{"text":"value"}' | nc localhost $port</pre>
       <pre id="stream">/* DemoText */</pre>
       <div id="graph" style="margin: auto;height:200px;width:300px; "></div>
-      <p>Points can be appended to this graph by writing JSON to tcp socket 9838 with property graph. For example, some time series data, or other measurements.</p>
-      <pre>echo '{"graph":{"x":0,"y":2}}' | nc localhost 9838
-echo '{"graph":{"x":10,"y":3}}' | nc localhost 9838
-echo '{"graph":{"x":20,"y":5}}' | nc localhost 9838
-echo '{"graph":{"x":30,"y":5}}' | nc localhost 9838</pre>
+      <p>Points can be appended to this graph by writing JSON to tcp socket $port with property graph. For example, some time series data, or other measurements.</p>
+      <pre>echo '{"graph":{"x":0,"y":2}}' | nc localhost $port
+echo '{"graph":{"x":10,"y":3}}' | nc localhost $port
+echo '{"graph":{"x":20,"y":5}}' | nc localhost $port
+echo '{"graph":{"x":30,"y":5}}' | nc localhost $port</pre>
     </div>
 
     <script src="//code.jquery.com/jquery.js"></script>

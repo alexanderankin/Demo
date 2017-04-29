@@ -2,9 +2,10 @@ var globalData = null;
 
 var events = new EventEmitter();
 
-var targetEl = $('#stream');
+// var demoTextTarget = $('#stream'); // moved to document-ready
+var demoTextTarget = null;
 function addToDemoText(text) {
-  targetEl.html(targetEl.html() + '\n' + text);
+  demoTextTarget.html(demoTextTarget.html() + '\n' + text);
 }
 
 var receiver = new EventSource('/stream');
@@ -46,8 +47,19 @@ function makeGraphDataContainer() {
 var graphData = makeGraphDataContainer();
 
 $(document).ready(function () {
+  demoTextTarget = $('#stream');
   events.addListener('graph-point', function (x, y) {
     // console.log(x, y)
     graphData.add(x, y); graphData.render();
+  });
+
+  // update the port dynamically if necessary
+  $.get('/port', function (data) {
+    console.log($('#port-holder').html())
+    $('#port-holder').html(
+      $('#port-holder').html().split('=').slice(0,-1)  // take off end
+        .concat(data)  // put on new end
+        .join('=')  // put back together
+    );
   });
 });

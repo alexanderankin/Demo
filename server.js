@@ -62,6 +62,10 @@ app.get('/stream', sse, function (req, response) {
   });
 });
 
+app.get('/port', function (req, res) {
+  res.json(port);
+});
+
 // This is copy and pasted from before, didnt finish this yet.
 /*app.post('/pichatat', function (req, res) {
   console.log(req.body);
